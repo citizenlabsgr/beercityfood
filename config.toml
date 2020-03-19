@@ -1,0 +1,5 @@
+baseURL = "https://beercityfood.com/"
+languageCode = "en-us"
+title = "Beer City Food"
+
+theme = "startpage-theme"

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}"{{ if and (isset .Site.Params "offline") ( .Site.Params.offline ) }} manifest="startpage.appcache"{{ end }}>
+    <head>
+        <title> {{ .Site.Title }} </title>
+        {{ partial "head.html" . }}
+    </head>
+    <body class="mdl-base">
+        <div class="mdl-layout__container"></div>
+            <div class="mdl-layout mdl-js-layout">
+                {{ partial "header.html" . }}
+                <main class="mdl-layout__content">
+                    <div class="mdl-grid">
+                        {{ range sort .Site.Data.links "restaurant" }}
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">{{ .restaurant }}</h4>
+                            </div>
+                            <div class="neighborhood">{{ .neighborhood }}</div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">{{ cond (eq .delivery true) "✅ Delivery" "" }}</div>
+                              <div class="delivery-option">{{ cond (eq .takeout true) "✅ Takeout" "" }}</div>
+                              <div class="delivery-option">{{ cond (eq .curbside true) "✅ Curbside service" "" }}</div>
+                              <div class="delivery-option">{{ cond (eq .drivethrough true) "✅ Drive-thru" "" }}</div>
+                              <div class="delivery-option">{{ cond (eq .onlineordering true) "✅ Online Ordering" "" }}</div>
+                            </div>
+                            {{ if .hours }}
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;{{ .hours }}</div>
+                            {{ end }}
+                            <div class="contact-options">
+                              {{ if .phonenumber }}
+                                <div class="phone">{{ .phonenumber }}</div>
+                              {{ end }}
+                              {{ if .url }}
+                                <div class="website-link"><a href="{{ .url }}" class="link mdl-button mdl-button--colored">Website</a></div>
+                              {{ end }}
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </main>
+                {{ partial "footer.html" . }}
+            </div>
+    </body>
+</html>

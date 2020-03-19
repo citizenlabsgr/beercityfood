@@ -1,0 +1,433 @@
+---
+
+- restaurant: Terra GR
+  neighborhood: Easttown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://terragr.com
+  notes:
+
+- restaurant: Speak Ez
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-458-3125
+  url: https://speakezlounge.com
+  notes:
+
+- restaurant: Rockford Brewing Company
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-9pm
+  phonenumber: 616-951-4677
+  url:
+  notes: 5 mile delivery radius.  Includes beer
+
+- restaurant: Jolly Pumpkin
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Sunday through Monday 12pm-9pm
+  phonenumber: 616-419-4676
+  url: https://brewery.jollypumpkin.com
+  notes: Delivery through Doordash
+
+- restaurant: Licari's Pizza Kitchen
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Thu 11am-8p, Fri-Sat 11am-9pm, Sun 12pm-8pm
+  phonenumber: 616-608-6912 (GR), 616-777-3100 (Hudsonville)
+  url: http://www.licarispizzakitchen.com
+  notes:
+
+- restaurant: Tacos el Caporal
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 10am-10pm
+  phonenumber: 616-246-6180
+  url:
+  notes:
+
+- restaurant: Van's Pastry
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 6am-4pm
+  phonenumber:
+  url:
+  notes: Delivery through UberEats
+
+- restaurant: Erb Thai
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Thu 11am-9pm, Fri 11am-9:30pm, Sat 5pm-9:30pm, Sun 12pm-9pm
+  phonenumber: 616-356-2573
+  url: http://erbthaigr.com
+  notes: Delivery through UberEats and GrubHub
+
+- restaurant: Fresh Coast Kitchen
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Fri 11am-8pm, Sat 11am-4pm, Sun 12pm-5pm
+  phonenumber: 616-608-5121
+  url: https://freshcoastkitchen.com
+  notes:
+
+- restaurant: Luna
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Sat 12pm-8pm
+  phonenumber: 616-288-6340
+  url: https://lunagr.com
+  notes:
+
+- restaurant: Bangkok Taste Cuisine
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-356-5550
+  url: https://www.facebook.com/Bangkok-Taste-Cuisine-161440890533083
+  notes: Delivery through Doordash, UberEats
+
+- restaurant: Daddy Pete's
+  neighborhood: todo
+  delivery: false
+  takeout: false
+  curbside: true
+  drivethrough: false
+  onlineordering: true
+  hours:
+  phonenumber: 616-426-8439
+  url: https://daddypetesbbq.com
+  notes:
+
+- restaurant: Rise Authentic Baking Co.
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: 8am-4pm
+  phonenumber: 616-288-7969
+  url: https://www.riseauthenticbaking.com
+  notes:
+
+- restaurant: Chez Olga
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-9pm
+  phonenumber: 616-233-4141
+  url: https://www.facebook.com/The-Chez-Olga-159135734109395/
+  notes:
+
+- restaurant: Cantina Mexican Grill
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: true
+  onlineordering: false
+  hours: 11am - 8pm
+  phonenumber: 616-949-9120
+  url: http://www.cantinamexicangrill.biz
+  notes:
+
+- restaurant: Osta's Lebanese Cuisine
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11:30-2pm and 4:30pm-8pm
+  phonenumber: 616-456-8999
+  url: http://ostaslebanese.com
+  notes:
+
+- restaurant: GR Bagel
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Fri-Sun 8am-1pm
+  phonenumber: 616-259-9699 (call) or 616-915-4039 (text)
+  url: https://grbagel.com
+  notes:
+
+- restaurant: Robinette's
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: 8am-5:30pm
+  phonenumber: 616-361-5567
+  url: https://robinettes.com
+  notes:
+
+- restaurant: Sovengard
+  neighborhood: todo
+  delivery: false
+  takeout: false
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 3pm-9pm
+  phonenumber: 616-214-7207
+  url: https://www.sovengard.com
+  notes: Garden Level menu available
+
+- restaurant: Sheshco Mediterranean Grill
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-8pm
+  phonenumber: 616-364-0600
+  url: http://www.sheshcogrill.com
+  notes:
+
+- restaurant: San Chez
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: 11am-6pm
+  phonenumber: 616-774-8272
+  url: https://www.sanchezbistro.com
+  notes:
+
+- restaurant: Schuler Books Chapbook Cafe
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-6pm
+  phonenumber: 616-942-0595
+  url: https://www.schulerbooks.com/curbside-pickup
+  notes:
+
+- restaurant: MudPenny
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: 10am-6pm
+  phonenumber: 616-259-5353 (call or text)
+  url: https://www.mudpenny.com/order
+  notes:
+
+- restaurant: Aroy Thai Restaurant
+  neighborhood: Allendale
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-895-2244
+  url: https://www.facebook.com/AllendaleAroyThai
+  notes:
+
+- restaurant: Bangkok Chef
+  neighborhood: Caledonia
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-536-6017
+  url: https://bangkok-chefcaledonia.business.site/
+  notes:
+
+- restaurant: Bangkok Taste
+  neighborhood: Jenison
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-667-8901
+  url: https://jenisonbangkok-taste.business.site/
+  notes:
+
+- restaurant: One Twenty Three Tavern
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Sun
+  phonenumber: 616-900-9123
+  url: https://123gr.com
+  notes: Delivery through UberEats
+
+- restaurant: The Friesian
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.friesiangr.com
+  notes: 20% off menu
+
+- restaurant: The Commons
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.facebook.com/CommonsGR/
+  notes:
+
+- restaurant: New Holland Brewing
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.newhollandbrew.com
+  notes:
+
+- restaurant: New Hotel Mertens
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.newhotelmertens.com
+  notes: Includes wine and beer
+
+- restaurant: That Early Bird
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: http://thatearlybird.com
+  notes:
+
+- restaurant: The Dog Pit
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: 10:30am-2:30pm
+  phonenumber:
+  url: http://thedogpitofgrandrapids.com
+  notes: UberEats, Postmates and DoorDash
+
+- restaurant: MIX
+  neighborhood: EGR
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.facebook.com/mixegr
+  notes:
+
+- restaurant: Electric Hero
+  neighborhood: todo
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: http://electricheroshop.com/location-menus
+  notes: Free delivery
+
+- restaurant: The Green Well
+  neighborhood: todo
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-8pm
+  phonenumber: 616-808-3566
+  url: https://thegreenwell.com
+  notes: Beer and wine bottles available
