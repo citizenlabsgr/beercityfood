@@ -240,18 +240,6 @@
   url: http://www.sheshcogrill.com
   notes:
 
-- restaurant: San Chez
-  neighborhood: Downtown
-  delivery: false
-  takeout: true
-  curbside: false
-  drivethrough: false
-  onlineordering: true
-  hours: 11am-6pm
-  phonenumber: 616-774-8272
-  url: https://www.sanchezbistro.com
-  notes:
-
 - restaurant: Schuler Books Chapbook Cafe
   neighborhood: 28th Street
   delivery: false
@@ -475,7 +463,458 @@
   curbside: true
   drivethrough: false
   onlineordering: false
-  hours: TODO
+  hours:
   phonenumber: 616-454-9370
   url: https://fratellisgr.com
   notes: Free delivery.  Includes wine and beer
+
+- restaurant: Slows Bar-B-Q (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616045401588
+  url:
+  notes: Delivery through GrubHub, DoorDash, Postmates and UberEats
+
+- restaurant: Spice Merchants (Downtown Market)
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 269-52-2066
+  url:
+  notes:
+
+- restaurant: Sushi Market (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: false
+  curbside: false
+  drivethrough: true
+  onlineordering: false
+  hours:
+  phonenumber: 616-288-6132
+  url:
+  notes: Delivery through UberEats and GrubHub
+
+- restaurant: Sweetie-Delicious Bake Shoppe (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-259-7005
+  url:
+  notes: Call for delivery options
+
+- restaurant: Tacos El Cuñado (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-710-8040
+  url:
+  notes: Delivery through Postmates
+
+- restaurant: Juju Bird (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-258-8115
+  url:
+  notes: Delivery through GrubHub, UberEats and Postmates
+
+- restaurant: Love's Ice Cream (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-965-1054
+  url:
+  notes: Delivery through UberEats
+
+- restaurant: Old World Olive Co (Downtown Market)
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-214-8403
+  url:
+  notes:
+
+- restaurant: PHO616 (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-724-4480
+  url:
+  notes: Delivery through DoorDash, UberEats, GrubHub, and Postmates
+
+- restaurant: Pinktail Poke (Downtown Market)
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-279-2670
+  url:
+  notes:
+
+- restaurant: Rak Thai (Downtown Market)
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-724-4866
+  url:
+  notes: Delivery through GrubHub and UberEats
+
+- restaurant: Bier Distillery
+  neighborhood: Comstock Park
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: 12pm-9pm
+  phonenumber: 616-888-9746
+  url: http://bierdistillery.com/orderonline
+  notes: Food menu plus beer cans/howlers/growlers and wine.
+
+- restaurant: Shanghai Ichiban
+  neighborhood: 28th Street
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Fri 11am-9pm, Sat-Sun 12pm-9pm
+  phonenumber: 616-942-5120
+  url: http://shanghaiichiban.com
+  notes: Delivery through UberEats and DoorDash
+
+
+- restaurant: The Donut Conspiracy
+  neighborhood: Knapp's Corner, Cascade, Rivertown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-259-9831 (Knapp's Corner), 616-805-5969 (Cascade), 616-551-3711 (Rivertown)
+  url: https://www.facebook.com/thedonutconspiracy/
+  notes: Delivery through Doordash and GrubHub
+
+- restaurant: Third Nature Brewing
+  neighborhood: Rockford
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-512-9314
+  url: http://thirdnaturebrewing.com
+  notes: Delivery radius within 5 miles.  Can also order through FB Messenger
+
+- restaurant: City Built Brewing
+  neighborhood: Belknap Lookout
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours:
+  phonenumber:
+  url: https://www.toasttab.com/city-built-brewing-company/v3
+  notes:
+
+- restaurant: Maru
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: https://www.marusushi.com
+  notes: Includes wine, beer and cider
+
+
+- restaurant: Kingfisher
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: http://kingfishergr.com
+  notes:
+
+- restaurant: Matchbox Diner
+  neighborhood: Easttown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: http://matchboxdiner.com
+  notes: Use code PICKUP25 for 25% off
+
+
+- restaurant: Margaux
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-242-1448
+  url:
+  notes:
+
+- restaurant: The Little Bird
+  neighborhood: Easttown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber:
+  url: http://thelittlebirdgr.com
+  notes:
+
+
+- restaurant: The Old Goat
+  neighborhood: Alger Heights
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-288-6976
+  url: http://www.oldgoatgr.com
+  notes: Call when you arrive for curbside carryout
+
+- restaurant: Donkey Taqueria
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-259-9483
+  url: http://www.donkeygr.com
+  notes:
+
+
+- restaurant: Zivio
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-608-3534
+  url: https://ziviogr.com
+  notes: Includes wine, beer, seltzer and cider.  Call when you arrive for curbside.
+
+- restaurant: Rinaldi's Pizza and Sub Shop
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-458-3737
+  url: https://www.rinaldipizzasub.com
+  notes:
+
+
+- restaurant: Lindo Mexico
+  neighborhood: 28th Street
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-2pm and 5-8m
+  phonenumber:
+  url: https://www.lindomexicogr.com
+  notes: Delivery and online ordering coming soon
+
+- restaurant: Arnie's Restaurant and Bakery
+  neighborhood: Westside and 28th Street
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Sat 11am-8pm
+  phonenumber:
+  url: http://arniesrestaurant.com
+  notes: Delivery coming soon
+
+- restaurant: El Granjero Mexican Grill
+  neighborhood: Westside (Bridge Street)
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-458-5595
+  url: https://www.elgranjeromexicangrill.com
+  notes: Kids eat free
+
+- restaurant: Brewery Vivant
+  neighborhood: East Hills
+  delivery: true
+  takeout: false
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-719-1604
+  url: https://www.breweryvivant.com
+  notes: Deliveries within boundaries of Hall, E. Beltline, Knapp and Monroe.
+
+
+- restaurant: Hancock
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-805-4232
+  url: http://www.hancockgr.com
+  notes:
+
+- restaurant: Marcona on Lyon
+  neighborhood: Heritage Hills
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 11am-9pm
+  phonenumber: 616-828-1228
+  url: https://marconaonlyon.com
+  notes:
+
+- restaurant: Long Road Distillers
+  neighborhood: Westside
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours:
+  phonenumber:
+  url: https://my-site-102585.square.site/s/order?location=11ea69440c3172f9891d54ab3a4df411
+  notes: Cocktail kits to go
+
+- restaurant: The Winchester
+  neighborhood: East Hills
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-451-4969
+  url: http://www.winchestergr.com
+  notes:
+
+- restaurant: Sip Juice Bar
+  neighborhood: Cascade
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Mon-Sat until 4pm
+  phonenumber: 616-301-4554
+  url: http://siporganicjuicebar.com
+  notes:
+
+- restaurant: Madcap Coffee
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: Mon-Fri 7am-3pm, Sat-Sun 8am-3pm
+  phonenumber:
+  url: http://orderonline.madcapcoffee.com
+  notes: Free shipping on 2+ bags of coffee
+
+- restaurant: Bro's Dough's
+  neighborhood: 28th Street
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Tue-Thu 7am-6pm, Fri-Sat 7am-8pm
+  phonenumber: 616-265-5098
+  url: http://brosdoughs.com/menu
+  notes: Call to order
+
+- restaurant: Speciation Artisan Ales
+  neighborhood: Comstock Park
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: Takeout 12pm-6pm, Delivery 6pm-8pm
+  phonenumber:
+  url: http://speciationales.com
+  notes:
