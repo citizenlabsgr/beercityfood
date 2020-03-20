@@ -3,3 +3,5 @@ languageCode = "en-us"
 title = "Beer City Food"
 
 theme = "startpage-theme"
+
+googleAnalytics = "UA-161485803-1"

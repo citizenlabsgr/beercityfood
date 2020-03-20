@@ -723,19 +723,6 @@
   url: http://thelittlebirdgr.com
   notes:
 
-
-- restaurant: The Old Goat
-  neighborhood: Alger Heights
-  delivery: false
-  takeout: true
-  curbside: true
-  drivethrough: false
-  onlineordering: false
-  hours:
-  phonenumber: 616-288-6976
-  url: http://www.oldgoatgr.com
-  notes: Call when you arrive for curbside carryout
-
 - restaurant: Donkey Taqueria
   neighborhood: East Hills
   delivery: true
