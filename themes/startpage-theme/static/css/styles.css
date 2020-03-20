@@ -89,7 +89,7 @@ header a:hover, footer a {
 }
 
 @media (max-width: 786px) {
-  .phone a[href^=tel] {
+  .phone a[href^="tel"] {
     color: #289EEE !important;
   }
 }
