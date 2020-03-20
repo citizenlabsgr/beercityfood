@@ -905,3 +905,15 @@
   phonenumber:
   url: http://speciationales.com
   notes:
+
+- restaurant: Furniture City Creamery
+  neighborhood: East Hills/Uptown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 12pm to 8pm every day
+  phonenumber: 616-920-0752
+  url: http://www.furniturecitycreamery.com
+  notes:
