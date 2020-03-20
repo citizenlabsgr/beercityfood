@@ -431,3 +431,51 @@
   phonenumber: 616-808-3566
   url: https://thegreenwell.com
   notes: Beer and wine bottles available
+
+- restaurant: Irie Kitchen
+  neighborhood: Kentwood
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours:
+  phonenumber: 616-512-4163
+  url: https://www.irie.kitchen/
+  notes:
+
+- restaurant: Toom
+  neighborhood: 28th Street
+  delivery: false
+  takeout: false
+  curbside: false
+  drivethrough: true
+  onlineordering: true
+  hours:
+  phonenumber:
+  url: https://www.eattoom.com
+  notes:
+
+- restaurant: Osteria Rossa
+  neighborhood: Downtown
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: Tue-Sat 4pm-8pm
+  phonenumber: 616-988-9350
+  url: http://osteriarossa.com
+  notes: Park near the Children's Museum and call for curbside dropoff
+
+- restaurant: Fratelli's Kitchen and Bar
+  neighborhood: Westside
+  delivery: true
+  takeout: false
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  hours: TODO
+  phonenumber: 616-454-9370
+  url: https://fratellisgr.com
+  notes: Free delivery.  Includes wine and beer

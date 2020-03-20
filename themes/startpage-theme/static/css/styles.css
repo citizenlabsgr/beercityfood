@@ -4,7 +4,6 @@ main {
   font-family: 'Open Sans', sans-serif;
 }
 
-
 /* Header styles */
 .mdl-color--gray {
   background-color: #84868d !important;
@@ -87,6 +86,12 @@ header a:hover, footer a {
 .contact-options, .website-link a {
   text-align: center !important;
   line-height: 32px;
+}
+
+@media (max-width: 786px) {
+  .phonenumber a[href^=tel] {
+    color: #84868d !important;
+  }
 }
 
 /* Footer styles */
