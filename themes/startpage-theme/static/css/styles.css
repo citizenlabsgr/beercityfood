@@ -29,6 +29,8 @@ header.mdl-color--gr-yellow {
 
 .mdl-layout__header-row {
   padding: 0 40px 0 20px !important;
+  display: flex;
+  justify-content: space-between;
 }
 
 header img.header-logo {
@@ -36,11 +38,33 @@ header img.header-logo {
   margin-right: 1em;
 }
 
+header .beer-city-food {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 1024px) {
   .mdl-layout__header {
     display: unset !important;
   }
 }
+
+@media screen and (max-width: 480px) {
+  header img.header-logo {
+      max-height: 2em;
+      margin-right: 0.5em;
+    }
+
+  .beer-city-food span {
+    font-size: 18px;
+  }
+
+  .mdl-layout__header-row {
+    padding: 0 12px 0 12px !important;
+  }
+}
+
+
 
 .delivery-options, .hours, .neighborhood, .contact-options {
   margin: 16px 32px;
@@ -53,4 +77,12 @@ header img.header-logo {
 .contact-options, .website-link a {
   text-align: center !important;
   line-height: 32px;
+}
+
+a {
+  color: white !important;
+}
+
+a:hover {
+  color: yellow !important;
 }

@@ -15,7 +15,7 @@
                             <div class="mdl-card__title mdl-color--gr-blue">
                                 <h4 class="mdl-card__title-text">{{ .restaurant }}</h4>
                             </div>
-                            <div class="neighborhood">{{ .neighborhood }}</div>
+                            <div class="neighborhood"><span>{{ .neighborhood }}</span></div>
                             <div class="delivery-options">
                               <div class="delivery-option">{{ cond (eq .delivery true) "✅ Delivery" "" }}</div>
                               <div class="delivery-option">{{ cond (eq .takeout true) "✅ Takeout" "" }}</div>
