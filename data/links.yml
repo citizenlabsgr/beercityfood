@@ -13,7 +13,7 @@
   notes:
 
 - restaurant: Speak Ez
-  neighborhood: todo
+  neighborhood: Belknap Lookout
   delivery: false
   takeout: true
   curbside: true
@@ -25,7 +25,7 @@
   notes:
 
 - restaurant: Rockford Brewing Company
-  neighborhood: todo
+  neighborhood: Rockford
   delivery: true
   takeout: true
   curbside: false
@@ -37,7 +37,7 @@
   notes: 5 mile delivery radius.  Includes beer
 
 - restaurant: Jolly Pumpkin
-  neighborhood: todo
+  neighborhood: Westside
   delivery: true
   takeout: true
   curbside: true
@@ -49,7 +49,7 @@
   notes: Delivery through Doordash
 
 - restaurant: Licari's Pizza Kitchen
-  neighborhood: todo
+  neighborhood: Knapp's Corner
   delivery: true
   takeout: true
   curbside: false
@@ -61,7 +61,7 @@
   notes:
 
 - restaurant: Tacos el Caporal
-  neighborhood: todo
+  neighborhood: Wyoming
   delivery: false
   takeout: true
   curbside: false
@@ -73,7 +73,7 @@
   notes:
 
 - restaurant: Van's Pastry
-  neighborhood: todo
+  neighborhood: East Hills
   delivery: true
   takeout: true
   curbside: false
@@ -85,7 +85,7 @@
   notes: Delivery through UberEats
 
 - restaurant: Erb Thai
-  neighborhood: todo
+  neighborhood: East Hills
   delivery: true
   takeout: true
   curbside: false
@@ -97,7 +97,7 @@
   notes: Delivery through UberEats and GrubHub
 
 - restaurant: Fresh Coast Kitchen
-  neighborhood: todo
+  neighborhood: Wyoming
   delivery: true
   takeout: true
   curbside: false
@@ -109,7 +109,7 @@
   notes:
 
 - restaurant: Luna
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: true
@@ -121,7 +121,7 @@
   notes:
 
 - restaurant: Bangkok Taste Cuisine
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: false
@@ -133,7 +133,7 @@
   notes: Delivery through Doordash, UberEats
 
 - restaurant: Daddy Pete's
-  neighborhood: todo
+  neighborhood: Alger Heights
   delivery: false
   takeout: false
   curbside: true
@@ -145,7 +145,7 @@
   notes:
 
 - restaurant: Rise Authentic Baking Co.
-  neighborhood: todo
+  neighborhood: John Ball Park
   delivery: false
   takeout: true
   curbside: true
@@ -157,7 +157,7 @@
   notes:
 
 - restaurant: Chez Olga
-  neighborhood: todo
+  neighborhood: Easttown
   delivery: false
   takeout: true
   curbside: false
@@ -169,7 +169,7 @@
   notes:
 
 - restaurant: Cantina Mexican Grill
-  neighborhood: todo
+  neighborhood: 28th Street
   delivery: false
   takeout: true
   curbside: false
@@ -181,7 +181,7 @@
   notes:
 
 - restaurant: Osta's Lebanese Cuisine
-  neighborhood: todo
+  neighborhood: East Grand Rapids
   delivery: false
   takeout: true
   curbside: false
@@ -193,7 +193,7 @@
   notes:
 
 - restaurant: GR Bagel
-  neighborhood: todo
+  neighborhood: Easttown
   delivery: true
   takeout: true
   curbside: false
@@ -205,7 +205,7 @@
   notes:
 
 - restaurant: Robinette's
-  neighborhood: todo
+  neighborhood: Northeast GR
   delivery: false
   takeout: true
   curbside: true
@@ -217,7 +217,7 @@
   notes:
 
 - restaurant: Sovengard
-  neighborhood: todo
+  neighborhood: Westside
   delivery: false
   takeout: false
   curbside: false
@@ -229,7 +229,7 @@
   notes: Garden Level menu available
 
 - restaurant: Sheshco Mediterranean Grill
-  neighborhood: todo
+  neighborhood: Knapp's Corner
   delivery: false
   takeout: true
   curbside: false
@@ -241,7 +241,7 @@
   notes:
 
 - restaurant: San Chez
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: false
   takeout: true
   curbside: false
@@ -253,7 +253,7 @@
   notes:
 
 - restaurant: Schuler Books Chapbook Cafe
-  neighborhood: todo
+  neighborhood: 28th Street
   delivery: false
   takeout: true
   curbside: true
@@ -265,7 +265,7 @@
   notes:
 
 - restaurant: MudPenny
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: false
   takeout: true
   curbside: false
@@ -313,7 +313,7 @@
   notes:
 
 - restaurant: One Twenty Three Tavern
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: true
@@ -325,7 +325,7 @@
   notes: Delivery through UberEats
 
 - restaurant: The Friesian
-  neighborhood: todo
+  neighborhood: Belknap Lookout
   delivery: false
   takeout: true
   curbside: false
@@ -337,7 +337,7 @@
   notes: 20% off menu
 
 - restaurant: The Commons
-  neighborhood: todo
+  neighborhood: East Hills
   delivery: false
   takeout: true
   curbside: false
@@ -349,7 +349,7 @@
   notes:
 
 - restaurant: New Holland Brewing
-  neighborhood: todo
+  neighborhood: Westside
   delivery: true
   takeout: true
   curbside: false
@@ -361,7 +361,7 @@
   notes:
 
 - restaurant: New Hotel Mertens
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: false
@@ -373,7 +373,7 @@
   notes: Includes wine and beer
 
 - restaurant: That Early Bird
-  neighborhood: todo
+  neighborhood: East Hills
   delivery: true
   takeout: true
   curbside: false
@@ -385,7 +385,7 @@
   notes:
 
 - restaurant: The Dog Pit
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: false
@@ -397,7 +397,7 @@
   notes: UberEats, Postmates and DoorDash
 
 - restaurant: MIX
-  neighborhood: EGR
+  neighborhood: East Grand Rapids
   delivery: false
   takeout: true
   curbside: true
@@ -409,7 +409,7 @@
   notes:
 
 - restaurant: Electric Hero
-  neighborhood: todo
+  neighborhood: Downtown
   delivery: true
   takeout: true
   curbside: false
@@ -421,7 +421,7 @@
   notes: Free delivery
 
 - restaurant: The Green Well
-  neighborhood: todo
+  neighborhood: East Hills
   delivery: false
   takeout: true
   curbside: true
