@@ -917,3 +917,15 @@
   phonenumber: 616-920-0752
   url: http://www.furniturecitycreamery.com
   notes:
+  
+- restaurant: Uccello's Ristorante
+  neighborhood: Downtown
+  delivery: Yes
+  takeout: Yes
+  curbside: Yes
+  drivethrough: No
+  onlineordering: Yes
+  hours: 11am-12am 
+  phonenumber: 616-773-1687
+  url: https://www.uccellos.com/
+  notes: 
