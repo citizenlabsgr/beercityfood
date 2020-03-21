@@ -917,3 +917,15 @@
   phonenumber: 616-920-0752
   url: http://www.furniturecitycreamery.com
   notes:
+
+- restaurant: Maggie's Kitchen
+  neighborhood: Westside
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  hours: Tues-Sat 9am-6pm
+  phonenumber: 616-458-8583
+  url: https://www.facebook.com/maggieskitchenwestside/
+  notes: Place orders (and view menu) on their Facebook Page.
