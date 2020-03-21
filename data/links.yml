@@ -34,7 +34,7 @@
   hours: 11am-9pm
   phonenumber: 616-951-4677
   url:
-  notes: 5 mile delivery radius.  Includes beer
+  notes: 5 mile delivery radius. Includes beer
 
 - restaurant: Jolly Pumpkin
   neighborhood: Westside
@@ -476,7 +476,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber: 616045401588
+  phonenumber: 616-454-1588
   url:
   notes: Delivery through GrubHub, DoorDash, Postmates and UberEats
 
@@ -624,7 +624,6 @@
   url: http://shanghaiichiban.com
   notes: Delivery through UberEats and DoorDash
 
-
 - restaurant: The Donut Conspiracy
   neighborhood: Knapp's Corner, Cascade, Rivertown
   delivery: true
@@ -698,7 +697,6 @@
   url: http://matchboxdiner.com
   notes: Use code PICKUP25 for 25% off
 
-
 - restaurant: Margaux
   neighborhood: Downtown
   delivery: false
@@ -735,7 +733,6 @@
   url: http://www.donkeygr.com
   notes:
 
-
 - restaurant: Zivio
   neighborhood: East Hills
   delivery: true
@@ -759,7 +756,6 @@
   phonenumber: 616-458-3737
   url: https://www.rinaldipizzasub.com
   notes:
-
 
 - restaurant: Lindo Mexico
   neighborhood: 28th Street
@@ -808,7 +804,6 @@
   phonenumber: 616-719-1604
   url: https://www.breweryvivant.com
   notes: Deliveries within boundaries of Hall, E. Beltline, Knapp and Monroe.
-
 
 - restaurant: Hancock
   neighborhood: East Hills
@@ -917,7 +912,7 @@
   phonenumber: 616-920-0752
   url: http://www.furniturecitycreamery.com
   notes:
-  
+
 - restaurant: Uccello's Ristorante
   neighborhood: Downtown
   delivery: Yes
@@ -925,7 +920,19 @@
   curbside: Yes
   drivethrough: No
   onlineordering: Yes
-  hours: 11am-12am 
+  hours: 11am-12am
   phonenumber: 616-773-1687
   url: https://www.uccellos.com/
-  notes: 
+  notes:
+
+- restaurant: Max's South Seas Hideaway
+  neighborhood: Downtown
+  delivery: Yes
+  takeout: Yes
+  curbside: No
+  drivethrough: No
+  onlineordering: Yes
+  hours: 11:30am-2pm, 4-7pm
+  phonenumber: 616-551-0016
+  url: https://www.toasttab.com/maxs-south-seas-hideaway/v2/online-order#!/order
+  notes:
