@@ -98,6 +98,13 @@
         deliveryOptions.appendChild(onlineordering);
       }
 
+      if (obj.alcohol) {
+        var alcohol = document.createElement('div');
+        alcohol.innerHTML = "🍻 Includes alcoholic beverages";
+        alcohol.className = "delivery-option";
+        deliveryOptions.appendChild(alcohol);
+      }
+
       card.appendChild(deliveryOptions);
 
       if (obj.hours) {

@@ -93,7 +93,7 @@ header a:hover, footer a {
   font-weight: 400 !important;
 }
 
-.delivery-options, .hours, .neighborhood, .contact-options, .additional-notes, .alcohol {
+.delivery-options, .hours, .neighborhood, .contact-options, .additional-notes {
   margin: 16px 32px;
 }
 
