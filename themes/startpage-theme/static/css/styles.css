@@ -55,6 +55,24 @@ header a:hover, footer a {
   color: yellow !important;
 }
 
+/* Search styles */
+.search {
+  margin: 24px 16px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search input {
+  line-height: 2em;
+  padding-left: 16px;
+  margin-left: 12px;
+  font-size: 18px;
+  flex-grow: 1;
+  border: 2px solid #289EEE;
+  border-radius: 15px;
+}
+
 /* Card styles */
 .link {
     display: block !important;
@@ -75,7 +93,7 @@ header a:hover, footer a {
   font-weight: 400 !important;
 }
 
-.delivery-options, .hours, .neighborhood, .contact-options {
+.delivery-options, .hours, .neighborhood, .contact-options, .additional-notes {
   margin: 16px 32px;
 }
 

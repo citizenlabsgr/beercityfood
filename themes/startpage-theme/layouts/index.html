@@ -9,8 +9,10 @@
             <div class="mdl-layout mdl-js-layout">
                 {{ partial "header.html" . }}
                 <main class="mdl-layout__content">
+                    {{ partial "search/site-search" . }}
                     <div class="mdl-grid">
                         {{ range sort .Site.Data.links "restaurant" }}
+
                         <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
                             <div class="mdl-card__title mdl-color--gr-blue">
                                 <h4 class="mdl-card__title-text">{{ .restaurant }}</h4>
@@ -26,6 +28,9 @@
                             {{ if .hours }}
                               <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;{{ .hours }}</div>
                             {{ end }}
+                            {{ if .notes }}
+                              <div class="additional-notes">⭐️ {{ .notes }}</div>
+                            {{ end }}
                             <div class="contact-options">
                               {{ if .phonenumber }}
                                 <div class="phone">{{ .phonenumber }}</div>
@@ -34,6 +39,7 @@
                                 <div class="website-link"><a href="{{ .url }}" class="link mdl-button mdl-button--colored">Visit Website</a></div>
                               {{ end }}
                             </div>
+
                         </div>
                         {{ end }}
                     </div>

@@ -1,0 +1,210 @@
+<script>
+  "use strict";
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var summaryContainer = document.querySelector('.summary__container');
+    var searchResult = document.querySelector('.search-result');
+    {{ $permalink:= .Permalink }}
+    var permalink = JSON.parse({{ $permalink | jsonify }});
+    var searchResults = null;
+    var searchMenu = null;
+    var searchText = null;
+
+    {{ $sectionType := .Type }}
+    var sectionType = JSON.parse({{ $sectionType | jsonify }});
+
+    var fuse = null;
+
+    (function initFuse() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', permalink + "index.json");
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+            keys: ['restaurant', 'neighborhood', 'hours', 'notes'],
+            // includeMatches: ,
+            shouldSort: true,
+            threshold: 0.4,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 1,
+          });
+          window.fuse = fuse;
+        }
+        else {
+          console.error('[' + xhr.status + ']Error:', xhr.statusText);
+        }
+      };
+      xhr.send();
+    })();
+
+    function makeCard(ulElem, obj) {
+      var card = document.createElement('div');
+      card.className = 'mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone';
+
+      var header = document.createElement('div');
+      header.className = "mdl-card__title mdl-color--gr-blue";
+
+      var headerH4 = document.createElement('h4');
+      headerH4.className = "mdl-card__title-text";
+      headerH4.innerHTML = obj.restaurant;
+      header.appendChild(headerH4);
+      card.appendChild(header);
+
+      var neighborhood = document.createElement('div');
+      neighborhood.className = "neighborhood";
+      var neighborhoodName = document.createElement('span');
+      neighborhoodName.innerHTML = obj.neighborhood;
+      neighborhood.appendChild(neighborhoodName);
+      card.appendChild(neighborhood);
+
+      var deliveryOptions = document.createElement('div');
+      deliveryOptions.className = "delivery-options"
+
+      if (obj.delivery) {
+        var delivery = document.createElement('div');
+        delivery.innerHTML = "✅ Delivery";
+        delivery.className = "delivery-option";
+        deliveryOptions.appendChild(delivery);
+      }
+
+      if (obj.takeout) {
+        var takeout = document.createElement('div');
+        takeout.innerHTML = "✅ Takeout";
+        takeout.className = "delivery-option";
+        deliveryOptions.appendChild(takeout);
+      }
+
+      if (obj.curbside) {
+        var curbside = document.createElement('div');
+        curbside.innerHTML = "✅ Curbside service";
+        curbside.className = "delivery-option";
+        deliveryOptions.appendChild(curbside);
+      }
+
+      if (obj.drivethrough) {
+        var drivethrough = document.createElement('div');
+        drivethrough.innerHTML = "✅ Drive-thru";
+        drivethrough.className = "delivery-option";
+        deliveryOptions.appendChild(drivethrough);
+      }
+
+      if (obj.onlineordering) {
+        var onlineordering = document.createElement('div');
+        onlineordering.innerHTML = "✅ Online ordering";
+        onlineordering.className = "delivery-option";
+        deliveryOptions.appendChild(onlineordering);
+      }
+
+      card.appendChild(deliveryOptions);
+
+      if (obj.hours) {
+        var hours = document.createElement('div');
+        hours.className = "hours";
+        hours.innerHTML = "<strong>Hours:</strong>&nbsp;&nbsp;" + obj.hours
+        card.appendChild(hours);
+      }
+
+      if (obj.notes) {
+        var notes = document.createElement('div');
+        notes.className = "additional-notes";
+        notes.innerHTML = "⭐️" + obj.notes
+        card.appendChild(notes);
+      }
+
+      var contactOptions = document.createElement('div');
+      contactOptions.className = "contact-options";
+
+      if (obj.phonenumber) {
+        var phonenumber = document.createElement('div');
+        phonenumber.className = "phone";
+        phonenumber.innerHTML = obj.phonenumber;
+        contactOptions.appendChild(phonenumber);
+      }
+      if (obj.url) {
+        var visitWebsite = document.createElement('div');
+        visitWebsite.className = "website-link";
+
+        var a = document.createElement('a');
+        a.className = "link mdl-button mdl-button--colored";
+        a.setAttribute('href', obj.url);
+        a.innerHTML = "Visit website";
+        visitWebsite.appendChild(a);
+
+        contactOptions.appendChild(visitWebsite);
+      }
+      card.appendChild(contactOptions);
+
+      ulElem.appendChild(card);
+    }
+
+    var searchElem = document.getElementById('search');
+    var searchResultsContainer = document.getElementById('search-results');
+
+    searchElem ?
+    searchElem.addEventListener('input', function(e) {
+      searchText = e.target.value;
+
+      if (!searchText) {
+        var results = fuse.list;
+        const orderedResults = {};
+
+        results.sort(function (a, b) {
+          return a.restaurant.localeCompare(b.restaurant);
+        });
+        renderSearchResultsMain(results);
+      } else {
+
+        var results = fuse.search(e.target.value);
+
+        renderSearchResultsMain(results);
+      }
+    }) : null;
+
+    searchElem ?
+    searchElem.addEventListener('click', function(e) {
+      if (!e.target.value) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dropdown') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      renderSearchResultsMain(results);
+    }) : null;
+
+    function renderSearchResultsMain(results) {
+      var searchBody = document.querySelector('.search-result__body');
+      var originGrid = document.querySelector('.mdl-grid');
+      var newCardGrid = document.createElement('div');
+      newCardGrid.className = "mdl-grid";
+
+      if (results && results.length) {
+          results.forEach(function (result) {
+            makeCard(newCardGrid, result);
+          });
+
+          searchResult ? searchResult.setAttribute('data-display', 'block') : null;
+          summaryContainer ? summaryContainer.setAttribute('data-display', 'none') : null;
+        }
+
+      originGrid.parentNode.replaceChild(newCardGrid, originGrid);
+    }
+
+  // ============================================================
+  });
+</script>
+
+<div class="search">
+  <span class="icon">
+    {{ partial "svgs/search.svg" (dict "width" 22 "height" 22) }}
+  </span>
+  <input id="search" aria-label="Site Search" class="input" type="text" placeholder="Search by restaurant name, neighborhood, etc" autocomplete="off">
+  <div id="search-results" class="dropdown">
+    <div id="search-menu" class="dropdown-menu" role="menu">
+    </div>
+  </div>
+</div>
