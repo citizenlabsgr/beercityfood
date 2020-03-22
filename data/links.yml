@@ -972,3 +972,15 @@
   phonenumber: 616-340-9372
   url: https://www.arvonbrewingco.com/
   notes: See website for delivery details
+  
+- restaurant: Field & Fire Cafe
+  neighborhood: North Monroe 
+  delivery: Yes
+  takeout: Yes
+  curbside: Yes
+  drivethrough: No
+  onlineordering: No
+  hours: 7am-3pm
+  phonenumber: 616-608-4533
+  url: http://www.fieldandfire.com/
+  notes: 
