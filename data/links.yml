@@ -31,6 +31,7 @@
   curbside: false
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours: 11am-9pm
   phonenumber: 616-951-4677
   url:
@@ -355,6 +356,7 @@
   curbside: false
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours:
   phonenumber: 616-551-1713
   url: https://www.newhotelmertens.com
@@ -415,6 +417,7 @@
   curbside: true
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours: 11am-8pm
   phonenumber: 616-808-3566
   url: https://thegreenwell.com
@@ -463,6 +466,7 @@
   curbside: true
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours:
   phonenumber: 616-454-9370
   url: https://fratellisgr.com
@@ -607,6 +611,7 @@
   curbside: false
   drivethrough: false
   onlineordering: true
+  alcohol: true
   hours: 12pm-9pm
   phonenumber: 616-888-9746
   url: http://bierdistillery.com/orderonline
@@ -667,6 +672,7 @@
   curbside: false
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours:
   phonenumber: 616-458-1900
   url: https://www.marusushi.com
@@ -740,6 +746,7 @@
   curbside: true
   drivethrough: false
   onlineordering: false
+  alcohol: true
   hours:
   phonenumber: 616-608-3534
   url: https://ziviogr.com
@@ -836,6 +843,7 @@
   curbside: false
   drivethrough: false
   onlineordering: true
+  alcohol: true
   hours:
   phonenumber: 616-228-4924
   url: https://my-site-102585.square.site/s/order?location=11ea69440c3172f9891d54ab3a4df411
@@ -972,9 +980,9 @@
   phonenumber: 616-340-9372
   url: https://www.arvonbrewingco.com/
   notes: See website for delivery details
-  
+
 - restaurant: Field & Fire Cafe
-  neighborhood: North Monroe 
+  neighborhood: North Monroe
   delivery: Yes
   takeout: Yes
   curbside: Yes
@@ -983,4 +991,17 @@
   hours: 7am-3pm
   phonenumber: 616-608-4533
   url: http://www.fieldandfire.com/
-  notes: 
+  notes:
+
+- restaurant: Buddy's Pizza
+  neighborhood: 28th Street
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  alcohol: false
+  hours: Sun-Thu 11am–8pm, Fri-Sat 11am-9pm
+  phonenumber: 616-554-9663
+  url: https://www.buddyspizza.com/
+  notes:
