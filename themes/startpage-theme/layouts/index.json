@@ -1,5 +1,5 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- range $index, $element := .Site.Data.links -}}
-  {{- $.Scratch.Add "index" (dict "restaurant" $element.restaurant "delivery" $element.delivery "takeout" $element.takeout "curbside" $element.curbside "drivethrough" $element.drivethrough "onlineordering" $element.onlineordering "hours" $element.hours "phonenumber" $element.phonenumber "url" $element.url "notes" $element.notes) -}}
+  {{- $.Scratch.Add "index" (dict "restaurant" $element.restaurant "neighborhood" $element.neighborhood "delivery" $element.delivery "takeout" $element.takeout "curbside" $element.curbside "drivethrough" $element.drivethrough "onlineordering" $element.onlineordering "hours" $element.hours "phonenumber" $element.phonenumber "url" $element.url "notes" $element.notes) -}}
 {{ end }}
 {{- $.Scratch.Get "index" | jsonify -}}
