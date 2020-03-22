@@ -8,7 +8,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-301-0998
   url: https://terragr.com
   notes:
 
@@ -69,7 +69,7 @@
   onlineordering: false
   hours: 10am-10pm
   phonenumber: 616-246-6180
-  url:
+  url: https://www.facebook.com/pages/Tacos-El-Caporal/120462027966529
   notes:
 
 - restaurant: Van's Pastry
@@ -80,8 +80,8 @@
   drivethrough: false
   onlineordering: false
   hours: 6am-4pm
-  phonenumber:
-  url:
+  phonenumber: 616-458-1637
+  url: https://www.facebook.com/vanspastry/
   notes: Delivery through UberEats
 
 - restaurant: Erb Thai
@@ -320,7 +320,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-825-3001
   url: https://www.friesiangr.com
   notes: 20% off menu
 
@@ -332,7 +332,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-458-2704
   url: https://www.facebook.com/CommonsGR/
   notes:
 
@@ -344,7 +344,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-345-5642
   url: https://www.newhollandbrew.com
   notes:
 
@@ -356,7 +356,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-551-1713
   url: https://www.newhotelmertens.com
   notes: Includes wine and beer
 
@@ -368,7 +368,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-258-8350
   url: http://thatearlybird.com
   notes:
 
@@ -380,7 +380,7 @@
   drivethrough: false
   onlineordering: true
   hours: 10:30am-2:30pm
-  phonenumber:
+  phonenumber: 616-988-1508
   url: http://thedogpitofgrandrapids.com
   notes: UberEats, Postmates and DoorDash
 
@@ -404,7 +404,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-454-1319
   url: http://electricheroshop.com/location-menus
   notes: Free delivery
 
@@ -440,7 +440,7 @@
   drivethrough: true
   onlineordering: true
   hours:
-  phonenumber:
+  phonenumber: 616-389-0365
   url: https://www.eattoom.com
   notes:
 
@@ -488,7 +488,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber: 269-52-2066
+  phonenumber: 269-532-2066
   url:
   notes:
 
@@ -520,7 +520,7 @@
   neighborhood: Downtown
   delivery: true
   takeout: true
-  curbside: false
+  curbside: true
   drivethrough: false
   onlineordering: false
   hours:
@@ -532,7 +532,7 @@
   neighborhood: Downtown
   delivery: true
   takeout: true
-  curbside: false
+  curbside: true
   drivethrough: false
   onlineordering: false
   hours:
@@ -544,7 +544,7 @@
   neighborhood: Downtown
   delivery: true
   takeout: true
-  curbside: false
+  curbside: true
   drivethrough: false
   onlineordering: false
   hours:
@@ -556,7 +556,7 @@
   neighborhood: Downtown
   delivery: false
   takeout: true
-  curbside: false
+  curbside: true
   drivethrough: false
   onlineordering: false
   hours:
@@ -592,12 +592,12 @@
   neighborhood: Downtown
   delivery: true
   takeout: true
-  curbside: false
+  curbside: true
   drivethrough: false
   onlineordering: false
   hours:
   phonenumber: 616-724-4866
-  url:
+  url: http://www.rakthaigr.com/
   notes: Delivery through GrubHub and UberEats
 
 - restaurant: Bier Distillery
@@ -656,7 +656,7 @@
   drivethrough: false
   onlineordering: true
   hours:
-  phonenumber:
+  phonenumber: 616-805-5755
   url: https://www.toasttab.com/city-built-brewing-company/v3
   notes:
 
@@ -668,7 +668,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-458-1900
   url: https://www.marusushi.com
   notes: Includes wine, beer and cider
 
@@ -681,7 +681,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-734-6833
   url: http://kingfishergr.com
   notes:
 
@@ -693,7 +693,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-774-8641
   url: http://matchboxdiner.com
   notes: Use code PICKUP25 for 25% off
 
@@ -717,7 +717,7 @@
   drivethrough: false
   onlineordering: false
   hours:
-  phonenumber:
+  phonenumber: 616-419-4168
   url: http://thelittlebirdgr.com
   notes:
 
@@ -765,19 +765,19 @@
   drivethrough: false
   onlineordering: false
   hours: 11am-2pm and 5-8m
-  phonenumber:
+  phonenumber: 616-261-2280
   url: https://www.lindomexicogr.com
   notes: Delivery and online ordering coming soon
 
 - restaurant: Arnie's Restaurant and Bakery
-  neighborhood: Westside and 28th Street
+  neighborhood: Wyoming, Westside and 28th Street
   delivery: false
   takeout: true
   curbside: false
   drivethrough: false
   onlineordering: false
   hours: Mon-Sat 11am-8pm
-  phonenumber:
+  phonenumber: 616-532-5662 (Wyoming), 616-956-7901 (28th), 616-458-2253 (Westwide)
   url: http://arniesrestaurant.com
   notes: Delivery coming soon
 
@@ -837,7 +837,7 @@
   drivethrough: false
   onlineordering: true
   hours:
-  phonenumber:
+  phonenumber: 616-228-4924
   url: https://my-site-102585.square.site/s/order?location=11ea69440c3172f9891d54ab3a4df411
   notes: Cocktail kits to go
 
@@ -873,7 +873,7 @@
   drivethrough: false
   onlineordering: true
   hours: Mon-Fri 7am-3pm, Sat-Sun 8am-3pm
-  phonenumber:
+  phonenumber: 616-866-9091
   url: http://orderonline.madcapcoffee.com
   notes: Free shipping on 2+ bags of coffee
 
@@ -960,3 +960,15 @@
   phonenumber: 616-726-8260
   url: https://graydonscrossing.com/
   notes:
+
+- restaurant: Arvon Brewing
+  neighborhood: Grandville
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: true
+  hours: Wed-Fri 4-7pm, Sat-Sun 12-3pm
+  phonenumber: 616-340-9372
+  url: https://www.arvonbrewingco.com/
+  notes: See website for delivery details
