@@ -24,6 +24,7 @@
                               <div class="delivery-option">{{ cond (eq .curbside true) "✅ Curbside service" "" }}</div>
                               <div class="delivery-option">{{ cond (eq .drivethrough true) "✅ Drive-thru" "" }}</div>
                               <div class="delivery-option">{{ cond (eq .onlineordering true) "✅ Online Ordering" "" }}</div>
+                              <div class="delivery-option">{{ cond (eq .alcohol true) "🍻Includes alcoholic beverages" "" }}</div>
                             </div>
                             {{ if .hours }}
                               <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;{{ .hours }}</div>
