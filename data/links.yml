@@ -1030,3 +1030,16 @@
   phonenumber: 616-881-2364
   url: https://facebook.com/railtownbrewing
   notes:
+
+- restaurant: Brann's Steakhouse & Grille (Cascade)
+  neighborhood: Case cafe and 28th street
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  alcohol: false
+  hours: 11am-8pm 
+  phonenumber: 616 285 7800 
+  url: https://www.branns.com/order-online/branns-cascade/
+  notes: 
