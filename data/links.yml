@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Patty Matters
+  neighborhood: N/A (Food Truck)
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: true
+  alcohol: false
+  hours: hours vary by location
+  phonenumber: 616-446-5210
+  url: http://pattymatters.com
+  notes: We are a food truck that will be setting up in various neighborhoods around West Michigan
+  
 - restaurant: Terra GR
   neighborhood: Eastown
   delivery: false
