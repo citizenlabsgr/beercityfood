@@ -1017,3 +1017,16 @@
   phonenumber: 616-241-4080
   url: https://www.facebook.com/Real-Food-Cafe-10150148805775188/
   notes: Breakfast menu only, call to order
+
+- restaurant: Railtown Brewing Company
+  neighborhood: Caledonia
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  alcohol: true
+  hours: Mon-Sat 12pm-8pm
+  phonenumber: 616-881-2364
+  url: https://facebook.com/railtownbrewing
+  notes:
