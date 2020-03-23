@@ -1043,3 +1043,16 @@
   phonenumber: 616 285 7800 
   url: https://www.branns.com/order-online/branns-cascade/
   notes: 
+
+- restaurant: TwoGuys Brewing
+  neighborhood: Wyoming Park
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: true
+  alcohol: true
+  hours: 12pm-8pm
+  phonenumber: 616-552-9690
+  url: http://wew.twoguys-brewing.com
+  notes: Online ordering: https://www.foodbooking.com/ordering/restaurant/menu?company_uid=cdcc733d-bf88-4ad7-a62d-6f78bcdd4940&restaurant_uid=63c0711f-6369-462b-8066-10f7e3e3dbfc&facebook=true
