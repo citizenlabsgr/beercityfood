@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Russ' Restaurant 
+  neighborhood: Woodlawn
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: true
+  onlineordering: true
+  alcohol: false
+  hours: 11am-8pm
+  phonenumber: 616-949-8631
+  url: https://www.russrestaurants.com/
+  notes: 
+
 - restaurant: Louise Earl Butcher
   neighborhood: Uptown
   delivery: false
