@@ -52,10 +52,17 @@ header a, footer a {
 }
 
 header a:hover, footer a {
-  color: yellow !important;
+  color: #F9EB49 !important;
 }
 
 /* Search styles */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .search {
   margin: 24px 16px 16px;
   display: flex;
@@ -67,10 +74,35 @@ header a:hover, footer a {
   line-height: 2em;
   padding-left: 16px;
   margin-left: 12px;
+  margin-right: 12px;
   font-size: 18px;
   flex-grow: 1;
   border: 2px solid #289EEE;
   border-radius: 15px;
+}
+
+.food-safety a {
+  color: #289EEE;
+}
+
+.food-safety a:hover {
+  color: #84868d;
+}
+
+@media screen and (max-width: 480px) {
+  .search {
+    display: block;
+    margin-bottom: 0px;
+  }
+
+  .search input {
+    font-size: 14px;
+  }
+
+  .food-safety {
+    text-align: center;
+    margin-top: 8px;
+  }
 }
 
 /* Card styles */

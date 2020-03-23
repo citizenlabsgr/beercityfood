@@ -206,12 +206,15 @@
 </script>
 
 <div class="search">
-  <span class="icon">
-    {{ partial "svgs/search.svg" (dict "width" 22 "height" 22) }}
-  </span>
-  <input id="search" aria-label="Site Search" class="input" type="text" placeholder="Search by restaurant name, neighborhood, etc" autocomplete="off">
-  <div id="search-results" class="dropdown">
-    <div id="search-menu" class="dropdown-menu" role="menu">
+  <div class="search-bar">
+    <span class="icon">
+      {{ partial "svgs/search.svg" (dict "width" 22 "height" 22) }}
+    </span>
+    <input id="search" aria-label="Site Search" class="input" type="text" placeholder="Search by restaurant name, neighborhood, etc" autocomplete="off">
+    <div id="search-results" class="dropdown">
+      <div id="search-menu" class="dropdown-menu" role="menu">
+      </div>
     </div>
   </div>
+  <div class="food-safety"><a href="https://www.seriouseats.com/2020/03/food-safety-and-coronavirus-a-comprehensive-guide.html">COVID-19 food safety guide</a></div>
 </div>
