@@ -1005,3 +1005,15 @@
   phonenumber: 616-554-9663
   url: https://www.buddyspizza.com/
   notes:
+
+- restaurant: Real Food Cafe
+  neighborhood: Alger Heights
+  delivery: false
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  hours: 8am - 2pm
+  phonenumber: 616-241-4080
+  url: https://www.facebook.com/Real-Food-Cafe-10150148805775188/
+  notes: Breakfast menu only, call to order
