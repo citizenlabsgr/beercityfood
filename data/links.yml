@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Louise Earl Butcher
+  neighborhood: Uptown
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  alcohol: false
+  hours: Tuesday to Sunday, varies
+  phonenumber: 616-930-3602
+  url: http://www.louiseearlbutcher.com/index.html#home
+  notes: Call ahead ordering, curbside pickup
+
 - restaurant: Patty Matters
   neighborhood: N/A (Food Truck)
   delivery: true
