@@ -1,5 +1,18 @@
 ---
 
+- restaurant: IHOP
+  neighborhood: Cascade and East Beltline
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: true
+  alcohol: false
+  hours: 7am-4pm
+  phonenumber: 616-956-0494, 616-364-1210
+  url: https://www.ihop.com
+  notes: Both are locally owned by a family in GR!
+
 - restaurant: Amore Trattoria Italiana
   neighborhood: Comstock Park 
   delivery: false
