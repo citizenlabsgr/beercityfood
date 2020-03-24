@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Amore Trattoria Italiana
+  neighborhood: Comstock Park 
+  delivery: false
+  takeout: true
+  curbside: true
+  drivethrough: true
+  onlineordering: true
+  alcohol: true
+  hours: 4pm-7pm 
+  phonenumber: 616-785-5343
+  url: http://amoretrattoriaitaliana.com/
+  notes: 
+
 - restaurant: Garage Bar & Grille
   neighborhood: 819 Ottawa ave nw 
   delivery: true
