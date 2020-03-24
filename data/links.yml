@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Garage Bar & Grille
+  neighborhood: 819 Ottawa ave nw 
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: false
+  alcohol: true
+  hours: 11am-8pm
+  phonenumber: 616-454-0321
+  url: https://www.garagebargr.com/
+  notes: 
+
 - restaurant: Russ' Restaurant 
   neighborhood: Woodlawn
   delivery: false
