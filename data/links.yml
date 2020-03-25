@@ -854,17 +854,17 @@
   url: https://www.lindomexicogr.com
   notes: Delivery and online ordering coming soon
 
-- restaurant: Arnie's Restaurant and Bakery
-  neighborhood: Wyoming, Westside and 28th Street
-  delivery: false
-  takeout: true
-  curbside: false
-  drivethrough: false
-  onlineordering: false
-  hours: Mon-Sat 11am-8pm
-  phonenumber: 616-532-5662 (Wyoming), 616-956-7901 (28th), 616-458-2253 (Westwide)
-  url: http://arniesrestaurant.com
-  notes: Delivery coming soon
+# - restaurant: Arnie's Restaurant and Bakery
+#   neighborhood: Wyoming, Westside and 28th Street
+#   delivery: false
+#   takeout: true
+#   curbside: false
+#   drivethrough: false
+#   onlineordering: false
+#   hours: Mon-Sat 11am-8pm
+#   phonenumber: 616-532-5662 (Wyoming), 616-956-7901 (28th), 616-458-2253 (Westwide)
+#   url: http://arniesrestaurant.com
+#   notes: Delivery coming soon
 
 - restaurant: El Granjero Mexican Grill
   neighborhood: Westside (Bridge Street)
