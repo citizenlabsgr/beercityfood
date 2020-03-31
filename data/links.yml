@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Craft Beer Cellar
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: false
+  drivethrough: false
+  onlineordering: true
+  alcohol: true
+  hours: 12pm-8pm
+  phonenumber: 616-350-9170
+  url: https://craftbeercellargr.com/about/delivery-shipping/
+  notes: 
+   
 - restaurant: IHOP
   neighborhood: Cascade and East Beltline
   delivery: true
