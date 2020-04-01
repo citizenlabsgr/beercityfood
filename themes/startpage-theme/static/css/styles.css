@@ -146,8 +146,13 @@ header a:hover, footer a {
 
 /* Footer styles */
 footer {
-  min-height: 24px;
+  min-height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+}
+
+footer a {
+  text-decoration: none;
 }
