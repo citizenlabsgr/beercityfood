@@ -1,5 +1,18 @@
 ---
 
+- restaurant: Z's Bar & Restaurant
+  neighborhood: Downtown
+  delivery: true
+  takeout: true
+  curbside: true
+  drivethrough: false
+  onlineordering: false
+  alcohol: true
+  hours: 3pm-9pm (Tuesday-Saturday)
+  phonenumber: 616-454-3141
+  url: https://www.zsbar.com/
+  notes: Delivery available through Grubhub
+  
 - restaurant: Craft Beer Cellar
   neighborhood: Downtown
   delivery: true
