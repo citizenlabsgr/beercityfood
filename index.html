@@ -1,0 +1,2893 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	<meta name="generator" content="Hugo 0.60.0" />
+        <title> Beer City Food </title>
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-161485803-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<link rel="shortcut icon" type="image/png" href="https://beercityfood.com/images/favicon.png"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://beercityfood.com/css/font-roboto.min.css">
+<link rel="stylesheet" href="https://beercityfood.com/css/styles.css" />
+<link rel="stylesheet" href="https://beercityfood.com/css/material.blue_grey-cyan.min.css">
+<script defer src="js/fuse.min.js"></script>
+
+    </head>
+    <body class="mdl-base">
+        <div class="mdl-layout__container"></div>
+            <div class="mdl-layout mdl-js-layout">
+                <header class="mdl-layout__header mdl-color--gray">
+    <div class="mdl-layout__header-row">
+      <div class="beer-city-food">
+        <img class="header-logo" src="images/gr.png "/>
+        <span class="mdl-layout-title">Beer City Food</span>
+      </div>
+      <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSf6mYaI8eiUzwtKHC5mHS_VAjsFHWrgOupnDz7jACBNxxNfew/viewform?usp=sf_link">Send us info here!</a></div>
+    </div>
+</header>
+
+                <main class="mdl-layout__content">
+                    <script>
+  "use strict";
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var summaryContainer = document.querySelector('.summary__container');
+    var searchResult = document.querySelector('.search-result');
+    
+    var permalink = JSON.parse("\"https://beercityfood.com/\"");
+    var searchResults = null;
+    var searchMenu = null;
+    var searchText = null;
+
+    
+    var sectionType = JSON.parse("\"page\"");
+
+    var fuse = null;
+
+    (function initFuse() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', permalink + "index.json");
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+            keys: ['restaurant', 'neighborhood', 'hours', 'notes'],
+            
+            shouldSort: true,
+            threshold: 0.4,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 1,
+          });
+          window.fuse = fuse;
+        }
+        else {
+          console.error('[' + xhr.status + ']Error:', xhr.statusText);
+        }
+      };
+      xhr.send();
+    })();
+
+    function makeCard(ulElem, obj) {
+      var card = document.createElement('div');
+      card.className = 'mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone';
+
+      var header = document.createElement('div');
+      header.className = "mdl-card__title mdl-color--gr-blue";
+
+      var headerH4 = document.createElement('h4');
+      headerH4.className = "mdl-card__title-text";
+      headerH4.innerHTML = obj.restaurant;
+      header.appendChild(headerH4);
+      card.appendChild(header);
+
+      var neighborhood = document.createElement('div');
+      neighborhood.className = "neighborhood";
+      var neighborhoodName = document.createElement('span');
+      neighborhoodName.innerHTML = obj.neighborhood;
+      neighborhood.appendChild(neighborhoodName);
+      card.appendChild(neighborhood);
+
+      var deliveryOptions = document.createElement('div');
+      deliveryOptions.className = "delivery-options"
+
+      if (obj.delivery) {
+        var delivery = document.createElement('div');
+        delivery.innerHTML = "✅ Delivery";
+        delivery.className = "delivery-option";
+        deliveryOptions.appendChild(delivery);
+      }
+
+      if (obj.takeout) {
+        var takeout = document.createElement('div');
+        takeout.innerHTML = "✅ Takeout";
+        takeout.className = "delivery-option";
+        deliveryOptions.appendChild(takeout);
+      }
+
+      if (obj.curbside) {
+        var curbside = document.createElement('div');
+        curbside.innerHTML = "✅ Curbside service";
+        curbside.className = "delivery-option";
+        deliveryOptions.appendChild(curbside);
+      }
+
+      if (obj.drivethrough) {
+        var drivethrough = document.createElement('div');
+        drivethrough.innerHTML = "✅ Drive-thru";
+        drivethrough.className = "delivery-option";
+        deliveryOptions.appendChild(drivethrough);
+      }
+
+      if (obj.onlineordering) {
+        var onlineordering = document.createElement('div');
+        onlineordering.innerHTML = "✅ Online ordering";
+        onlineordering.className = "delivery-option";
+        deliveryOptions.appendChild(onlineordering);
+      }
+
+      if (obj.alcohol) {
+        var alcohol = document.createElement('div');
+        alcohol.innerHTML = "🍻 Includes alcoholic beverages";
+        alcohol.className = "delivery-option";
+        deliveryOptions.appendChild(alcohol);
+      }
+
+      card.appendChild(deliveryOptions);
+
+      if (obj.hours) {
+        var hours = document.createElement('div');
+        hours.className = "hours";
+        hours.innerHTML = "<strong>Hours:</strong>&nbsp;&nbsp;" + obj.hours
+        card.appendChild(hours);
+      }
+
+      if (obj.notes) {
+        var notes = document.createElement('div');
+        notes.className = "additional-notes";
+        notes.innerHTML = "⭐️" + obj.notes
+        card.appendChild(notes);
+      }
+
+      var contactOptions = document.createElement('div');
+      contactOptions.className = "contact-options";
+
+      if (obj.phonenumber) {
+        var phonenumber = document.createElement('div');
+        phonenumber.className = "phone";
+        phonenumber.innerHTML = obj.phonenumber;
+        contactOptions.appendChild(phonenumber);
+      }
+      if (obj.url) {
+        var visitWebsite = document.createElement('div');
+        visitWebsite.className = "website-link";
+
+        var a = document.createElement('a');
+        a.className = "link mdl-button mdl-button--colored";
+        a.setAttribute('href', obj.url);
+        a.innerHTML = "Visit website";
+        visitWebsite.appendChild(a);
+
+        contactOptions.appendChild(visitWebsite);
+      }
+      card.appendChild(contactOptions);
+
+      ulElem.appendChild(card);
+    }
+
+    var searchElem = document.getElementById('search');
+    var searchResultsContainer = document.getElementById('search-results');
+
+    searchElem ?
+    searchElem.addEventListener('input', function(e) {
+      searchText = e.target.value;
+
+      if (!searchText) {
+        var results = fuse.list;
+        const orderedResults = {};
+
+        results.sort(function (a, b) {
+          return a.restaurant.localeCompare(b.restaurant);
+        });
+        renderSearchResultsMain(results);
+      } else {
+
+        var results = fuse.search(e.target.value);
+
+        renderSearchResultsMain(results);
+      }
+    }) : null;
+
+    searchElem ?
+    searchElem.addEventListener('click', function(e) {
+      if (!e.target.value) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dropdown') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      renderSearchResultsMain(results);
+    }) : null;
+
+    function renderSearchResultsMain(results) {
+      var searchBody = document.querySelector('.search-result__body');
+      var originGrid = document.querySelector('.mdl-grid');
+      var newCardGrid = document.createElement('div');
+      newCardGrid.className = "mdl-grid";
+
+      if (results && results.length) {
+          results.forEach(function (result) {
+            makeCard(newCardGrid, result);
+          });
+
+          searchResult ? searchResult.setAttribute('data-display', 'block') : null;
+          summaryContainer ? summaryContainer.setAttribute('data-display', 'none') : null;
+        }
+
+      originGrid.parentNode.replaceChild(newCardGrid, originGrid);
+    }
+
+  
+  });
+</script>
+
+<div class="search">
+  <div class="search-bar">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+
+    </span>
+    <input id="search" aria-label="Site Search" class="input" type="text" placeholder="Search by restaurant name, neighborhood, etc" autocomplete="off">
+    <div id="search-results" class="dropdown">
+      <div id="search-menu" class="dropdown-menu" role="menu">
+      </div>
+    </div>
+  </div>
+  <div class="food-safety"><a href="https://www.seriouseats.com/2020/03/food-safety-and-coronavirus-a-comprehensive-guide.html">COVID-19 food safety guide</a></div>
+</div>
+
+                    <div class="mdl-grid">
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Amore Trattoria Italiana</h4>
+                            </div>
+                            <div class="neighborhood"><span>Comstock Park</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option">✅ Drive-thru</div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;4pm-7pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-785-5343</div>
+                              
+                              
+                                <div class="website-link"><a href="http://amoretrattoriaitaliana.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Aroy Thai Restaurant</h4>
+                            </div>
+                            <div class="neighborhood"><span>Allendale</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-895-2244</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/AllendaleAroyThai" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Arvon Brewing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Grandville</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Wed-Fri 4-7pm, Sat-Sun 12-3pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ See website for delivery details</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-340-9372</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.arvonbrewingco.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Bangkok Chef</h4>
+                            </div>
+                            <div class="neighborhood"><span>Caledonia</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-536-6017</div>
+                              
+                              
+                                <div class="website-link"><a href="https://bangkok-chefcaledonia.business.site/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Bangkok Taste</h4>
+                            </div>
+                            <div class="neighborhood"><span>Jenison</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-667-8901</div>
+                              
+                              
+                                <div class="website-link"><a href="https://jenisonbangkok-taste.business.site/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Bangkok Taste Cuisine</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through Doordash, UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-356-5550</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/Bangkok-Taste-Cuisine-161440890533083" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Bier Distillery</h4>
+                            </div>
+                            <div class="neighborhood"><span>Comstock Park</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;12pm-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Food menu plus beer cans/howlers/growlers and wine.</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-888-9746</div>
+                              
+                              
+                                <div class="website-link"><a href="http://bierdistillery.com/orderonline" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Brann&#39;s Steakhouse &amp; Grille (Cascade)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Case cafe and 28th street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616 285 7800</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.branns.com/order-online/branns-cascade/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Brewery Vivant</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Deliveries within boundaries of Hall, E. Beltline, Knapp and Monroe.</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-719-1604</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.breweryvivant.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Bro&#39;s Dough&#39;s</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Tue-Thu 7am-6pm, Fri-Sat 7am-8pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Call to order</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-265-5098</div>
+                              
+                              
+                                <div class="website-link"><a href="http://brosdoughs.com/menu" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Buddy&#39;s Pizza</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Sun-Thu 11am–8pm, Fri-Sat 11am-9pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-554-9663</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.buddyspizza.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Cantina Mexican Grill</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Drive-thru</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am - 8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-949-9120</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.cantinamexicangrill.biz" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Chez Olga</h4>
+                            </div>
+                            <div class="neighborhood"><span>Eastown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-9pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-233-4141</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/The-Chez-Olga-159135734109395/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">City Built Brewing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Belknap Lookout</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-805-5755</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.toasttab.com/city-built-brewing-company/v3" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Craft Beer Cellar</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;12pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-350-9170</div>
+                              
+                              
+                                <div class="website-link"><a href="https://craftbeercellargr.com/about/delivery-shipping/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Daddy Pete&#39;s</h4>
+                            </div>
+                            <div class="neighborhood"><span>Alger Heights</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-426-8439</div>
+                              
+                              
+                                <div class="website-link"><a href="https://daddypetesbbq.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Donkey Taqueria</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-259-9483</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.donkeygr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">El Granjero Mexican Grill</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside (Bridge Street)</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Kids eat free</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-5595</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.elgranjeromexicangrill.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Electric Hero</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Free delivery</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-454-1319</div>
+                              
+                              
+                                <div class="website-link"><a href="http://electricheroshop.com/location-menus" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Erb Thai</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Thu 11am-9pm, Fri 11am-9:30pm, Sat 5pm-9:30pm, Sun 12pm-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats and GrubHub</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-356-2573</div>
+                              
+                              
+                                <div class="website-link"><a href="http://erbthaigr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Field &amp; Fire Cafe</h4>
+                            </div>
+                            <div class="neighborhood"><span>North Monroe</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;7am-3pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-608-4533</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.fieldandfire.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Fratelli&#39;s Kitchen and Bar</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Free delivery.  Includes wine and beer</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-454-9370</div>
+                              
+                              
+                                <div class="website-link"><a href="https://fratellisgr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Fresh Coast Kitchen</h4>
+                            </div>
+                            <div class="neighborhood"><span>Wyoming</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Fri 11am-8pm, Sat 11am-4pm, Sun 12pm-5pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-608-5121</div>
+                              
+                              
+                                <div class="website-link"><a href="https://freshcoastkitchen.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Furniture City Creamery</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills/Uptown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;12pm to 8pm every day</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-920-0752</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.furniturecitycreamery.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Garage Bar &amp; Grille</h4>
+                            </div>
+                            <div class="neighborhood"><span>819 Ottawa ave nw</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-454-0321</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.garagebargr.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">GR Bagel</h4>
+                            </div>
+                            <div class="neighborhood"><span>Eastown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Fri-Sun 8am-1pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-259-9699 (call) or 616-915-4039 (text)</div>
+                              
+                              
+                                <div class="website-link"><a href="https://grbagel.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Graydon&#39;s Crossing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Creston</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-726-8260</div>
+                              
+                              
+                                <div class="website-link"><a href="https://graydonscrossing.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Hancock</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-805-4232</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.hancockgr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">IHOP</h4>
+                            </div>
+                            <div class="neighborhood"><span>Cascade and East Beltline</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;7am-4pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Both are locally owned by a family in GR!</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-956-0494, 616-364-1210</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.ihop.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Irie Kitchen</h4>
+                            </div>
+                            <div class="neighborhood"><span>Kentwood</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-512-4163</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.irie.kitchen/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Jolly Pumpkin</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Sunday through Monday 12pm-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through Doordash</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-419-4676</div>
+                              
+                              
+                                <div class="website-link"><a href="https://brewery.jollypumpkin.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Juju Bird (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through GrubHub, UberEats and Postmates</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-258-8115</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Kingfisher</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-734-6833</div>
+                              
+                              
+                                <div class="website-link"><a href="http://kingfishergr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Licari&#39;s Pizza Kitchen</h4>
+                            </div>
+                            <div class="neighborhood"><span>Knapp&#39;s Corner</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Thu 11am-8p, Fri-Sat 11am-9pm, Sun 12pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-608-6912 (GR), 616-777-3100 (Hudsonville)</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.licarispizzakitchen.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Lindo Mexico</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-2pm and 5-8m</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery and online ordering coming soon</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-261-2280</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.lindomexicogr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Long Road Distillers</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Cocktail kits to go</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-228-4924</div>
+                              
+                              
+                                <div class="website-link"><a href="https://my-site-102585.square.site/s/order?location=11ea69440c3172f9891d54ab3a4df411" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Louise Earl Butcher</h4>
+                            </div>
+                            <div class="neighborhood"><span>Uptown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Tuesday to Sunday, varies</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Call ahead ordering, curbside pickup</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-930-3602</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.louiseearlbutcher.com/index.html#home" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Love&#39;s Ice Cream (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-965-1054</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Luna</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Sat 12pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-288-6340</div>
+                              
+                              
+                                <div class="website-link"><a href="https://lunagr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Madcap Coffee</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Fri 7am-3pm, Sat-Sun 8am-3pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Free shipping on 2&#43; bags of coffee</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-866-9091</div>
+                              
+                              
+                                <div class="website-link"><a href="http://orderonline.madcapcoffee.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Maggie&#39;s Kitchen</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Tues-Sat 9am-6pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Place orders (and view menu) on their Facebook Page.</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-8583</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/maggieskitchenwestside/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Margaux</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-242-1448</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Maru</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Includes wine, beer and cider</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-1900</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.marusushi.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Matchbox Diner</h4>
+                            </div>
+                            <div class="neighborhood"><span>Eastown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Use code PICKUP25 for 25% off</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-774-8641</div>
+                              
+                              
+                                <div class="website-link"><a href="http://matchboxdiner.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Max&#39;s South Seas Hideaway</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11:30am-2pm, 4-7pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-551-0016</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.toasttab.com/maxs-south-seas-hideaway/v2/online-order#!/order" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">MIX</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Grand Rapids</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/mixegr" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">MudPenny</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;10am-6pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-259-5353 (call or text)</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.mudpenny.com/order" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">New Holland Brewing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-345-5642</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.newhollandbrew.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">New Hotel Mertens</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Includes wine and beer</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-551-1713</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.newhotelmertens.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Old World Olive Co (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-214-8403</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">One Twenty Three Tavern</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Sun</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-900-9123</div>
+                              
+                              
+                                <div class="website-link"><a href="https://123gr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Osta&#39;s Lebanese Cuisine</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Grand Rapids</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11:30-2pm and 4:30pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-456-8999</div>
+                              
+                              
+                                <div class="website-link"><a href="http://ostaslebanese.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Osteria Rossa</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Tue-Sat 4pm-8pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Park near the Children&#39;s Museum and call for curbside dropoff</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-988-9350</div>
+                              
+                              
+                                <div class="website-link"><a href="http://osteriarossa.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Patty Matters</h4>
+                            </div>
+                            <div class="neighborhood"><span>N/A (Food Truck)</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;hours vary by location</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ We are a food truck that will be setting up in various neighborhoods around West Michigan</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-446-5210</div>
+                              
+                              
+                                <div class="website-link"><a href="http://pattymatters.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">PHO616 (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through DoorDash, UberEats, GrubHub, and Postmates</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-724-4480</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Pinktail Poke (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-279-2670</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Railtown Brewing Company</h4>
+                            </div>
+                            <div class="neighborhood"><span>Caledonia</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Sat 12pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-881-2364</div>
+                              
+                              
+                                <div class="website-link"><a href="https://facebook.com/railtownbrewing" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Rak Thai (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through GrubHub and UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-724-4866</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.rakthaigr.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Real Food Cafe</h4>
+                            </div>
+                            <div class="neighborhood"><span>Alger Heights</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;8am - 2pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Breakfast menu only, call to order</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-241-4080</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/Real-Food-Cafe-10150148805775188/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Rinaldi&#39;s Pizza and Sub Shop</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-3737</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.rinaldipizzasub.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Rise Authentic Baking Co.</h4>
+                            </div>
+                            <div class="neighborhood"><span>John Ball Park</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;8am-4pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-288-7969</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.riseauthenticbaking.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Robinette&#39;s</h4>
+                            </div>
+                            <div class="neighborhood"><span>Northeast GR</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;8am-5:30pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-361-5567</div>
+                              
+                              
+                                <div class="website-link"><a href="https://robinettes.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Rockford Brewing Company</h4>
+                            </div>
+                            <div class="neighborhood"><span>Rockford</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ 5 mile delivery radius. Includes beer</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-951-4677</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Russ&#39; Restaurant</h4>
+                            </div>
+                            <div class="neighborhood"><span>Woodlawn</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Drive-thru</div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-949-8631</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.russrestaurants.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Schuler Books Chapbook Cafe</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-6pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-942-0595</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.schulerbooks.com/curbside-pickup" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Shanghai Ichiban</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Fri 11am-9pm, Sat-Sun 12pm-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats and DoorDash</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-942-5120</div>
+                              
+                              
+                                <div class="website-link"><a href="http://shanghaiichiban.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Sheshco Mediterranean Grill</h4>
+                            </div>
+                            <div class="neighborhood"><span>Knapp&#39;s Corner</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-364-0600</div>
+                              
+                              
+                                <div class="website-link"><a href="http://www.sheshcogrill.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Sip Juice Bar</h4>
+                            </div>
+                            <div class="neighborhood"><span>Cascade</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Mon-Sat until 4pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-301-4554</div>
+                              
+                              
+                                <div class="website-link"><a href="http://siporganicjuicebar.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Slows Bar-B-Q (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through GrubHub, DoorDash, Postmates and UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-454-1588</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Sovengard</h4>
+                            </div>
+                            <div class="neighborhood"><span>Westside</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;3pm-9pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Garden Level menu available</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-214-7207</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.sovengard.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Speak EZ</h4>
+                            </div>
+                            <div class="neighborhood"><span>Belknap Lookout</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-3125</div>
+                              
+                              
+                                <div class="website-link"><a href="https://speakezlounge.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Speciation Artisan Ales</h4>
+                            </div>
+                            <div class="neighborhood"><span>Comstock Park</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;Takeout 12pm-6pm, Delivery 6pm-8pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                              
+                                <div class="website-link"><a href="http://speciationales.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Spice Merchants (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">269-532-2066</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Sushi Market (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Drive-thru</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats and GrubHub</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-288-6132</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Sweetie-Delicious Bake Shoppe (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Call for delivery options</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-259-7005</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Tacos el Caporal</h4>
+                            </div>
+                            <div class="neighborhood"><span>Wyoming</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;10am-10pm</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-246-6180</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/pages/Tacos-El-Caporal/120462027966529" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Tacos El Cuñado (Downtown Market)</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through Postmates</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-710-8040</div>
+                              
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Terra GR</h4>
+                            </div>
+                            <div class="neighborhood"><span>Eastown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-301-0998</div>
+                              
+                              
+                                <div class="website-link"><a href="https://terragr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">That Early Bird</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-258-8350</div>
+                              
+                              
+                                <div class="website-link"><a href="http://thatearlybird.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">The Dog Pit</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;10:30am-2:30pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ UberEats, Postmates and DoorDash</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-988-1508</div>
+                              
+                              
+                                <div class="website-link"><a href="http://thedogpitofgrandrapids.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">The Donut Conspiracy</h4>
+                            </div>
+                            <div class="neighborhood"><span>Knapp&#39;s Corner, Cascade, Rivertown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through Doordash and GrubHub</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-259-9831 (Knapp&#39;s Corner), 616-805-5969 (Cascade), 616-551-3711 (Rivertown)</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/thedonutconspiracy/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">The Friesian</h4>
+                            </div>
+                            <div class="neighborhood"><span>Belknap Lookout</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ 20% off menu</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-825-3001</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.friesiangr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">The Green Well</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-8pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Beer and wine bottles available</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-808-3566</div>
+                              
+                              
+                                <div class="website-link"><a href="https://thegreenwell.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">The Little Bird</h4>
+                            </div>
+                            <div class="neighborhood"><span>Eastown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-419-4168</div>
+                              
+                              
+                                <div class="website-link"><a href="http://thelittlebirdgr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Third Nature Brewing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Rockford</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery radius within 5 miles.  Can also order through FB Messenger</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-512-9314</div>
+                              
+                              
+                                <div class="website-link"><a href="http://thirdnaturebrewing.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Toom</h4>
+                            </div>
+                            <div class="neighborhood"><span>28th Street</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Drive-thru</div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-389-0365</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.eattoom.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">TwoGuys Brewing</h4>
+                            </div>
+                            <div class="neighborhood"><span>Wyoming Park</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;12pm-8pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Online ordering: https://www.foodbooking.com/ordering/restaurant/menu?company_uid=cdcc733d-bf88-4ad7-a62d-6f78bcdd4940&amp;restaurant_uid=63c0711f-6369-462b-8066-10f7e3e3dbfc&amp;facebook=true</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-552-9690</div>
+                              
+                              
+                                <div class="website-link"><a href="https://twoguys-brewing.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Uccello&#39;s Ristorante</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">✅ Online Ordering</div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;11am-12am</div>
+                            
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-773-1687</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.uccellos.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Van&#39;s Pastry</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;6am-4pm</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery through UberEats</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-458-1637</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.facebook.com/vanspastry/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Z&#39;s Bar &amp; Restaurant</h4>
+                            </div>
+                            <div class="neighborhood"><span>Downtown</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                              <div class="hours"><strong>Hours:</strong>&nbsp;&nbsp;3pm-9pm (Tuesday-Saturday)</div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Delivery available through Grubhub</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-454-3141</div>
+                              
+                              
+                                <div class="website-link"><a href="https://www.zsbar.com/" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="mdl-card mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                            <div class="mdl-card__title mdl-color--gr-blue">
+                                <h4 class="mdl-card__title-text">Zivio</h4>
+                            </div>
+                            <div class="neighborhood"><span>East Hills</span></div>
+                            <div class="delivery-options">
+                              <div class="delivery-option">✅ Delivery</div>
+                              <div class="delivery-option">✅ Takeout</div>
+                              <div class="delivery-option">✅ Curbside service</div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option"></div>
+                              <div class="delivery-option">🍻Includes alcoholic beverages</div>
+                            </div>
+                            
+                            
+                              <div class="additional-notes">⭐️ Includes wine, beer, seltzer and cider.  Call when you arrive for curbside.</div>
+                            
+                            <div class="contact-options">
+                              
+                                <div class="phone">616-608-3534</div>
+                              
+                              
+                                <div class="website-link"><a href="https://ziviogr.com" class="link mdl-button mdl-button--colored">Visit Website</a></div>
+                              
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                </main>
+                <script defer src="https://beercityfood.com/js/material.min.js"></script>
+<footer class="mdl-color--gray">
+  <div>
+    <a href="https://github.com/citizenlabsgr/beercityfood" target="_blank">Made</a>
+    with 💙by
+    <a href="https://citizenlabs.org/" target="_blank">Citizen Labs</a>
+  </div>
+</footer>
+
+            </div>
+    </body>
+</html>
